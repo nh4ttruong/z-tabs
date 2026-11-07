@@ -43,7 +43,7 @@ const VI = {
   "p4-title": "Mã nguồn mở",
   "p4-body": "Ai cũng xem được từng dòng code trên <a href=\"https://github.com/nh4ttruong/z-tabs\">GitHub</a>.",
   "limits-eyebrow": "Nên biết trước",
-  "limits-title": "Nói trước cho khỏi buồn.",
+  "limits-title": "Những giới hạn cần lưu ý.",
   "l1-title": "Không phải tính năng chính chủ của Zalo",
   "l1-body": "Zalo cập nhật có thể làm Z Tabs ngừng chạy. Khi đó bạn vẫn chat bình thường, chỉ là lại một tab như trước.",
   "l2-title": "Mỗi lúc chỉ một nơi",
