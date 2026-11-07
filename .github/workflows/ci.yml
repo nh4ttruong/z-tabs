@@ -4,7 +4,7 @@ on:
   # Only main: other branches and pull requests run nothing.
   push:
     branches: [main]
-    paths-ignore: ["**.md"]
+    paths-ignore: ["**.md", "docs/**"]
   workflow_dispatch:
     inputs:
       bump:
