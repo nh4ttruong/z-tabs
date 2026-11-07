@@ -57,6 +57,7 @@ svg { flex: 0 0 auto; }
 .btn-primary:hover { box-shadow: 0 0 0 1px var(--blue-edge) inset, 0 18px 48px -10px rgba(0, 104, 255, .85); }
 .btn-ghost { background: var(--surface-2); border: 1px solid #1E2D47; color: var(--text); }
 .btn-small { height: 40px; padding: 0 14px; font-size: 14px; gap: 8px; background: transparent; }
+.brand { display: grid; place-items: center; width: 28px; height: 28px; margin-left: -10px; border-radius: 999px; background: #fff; }
 
 /* Hero */
 .hero { position: relative; overflow-x: clip; padding: clamp(56px, 8vw, 104px) 0 clamp(64px, 8vw, 112px); }
@@ -69,7 +70,6 @@ svg { flex: 0 0 auto; }
 .accent { color: var(--blue-soft); }
 .lead { margin-top: 24px; max-width: 620px; font-size: clamp(17px, 1.6vw, 20px); line-height: 1.55; color: var(--muted); text-wrap: pretty; }
 .actions { margin-top: 36px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
-.fine { margin-top: 18px; font-size: 14px; color: var(--faint); }
 
 /* Demo */
 .demo { position: relative; width: 100%; max-width: 1040px; margin-top: clamp(48px, 6vw, 72px); text-align: left; }
@@ -101,15 +101,20 @@ svg { flex: 0 0 auto; }
 .chat i.me { align-self: flex-end; background: #0B3D91; }
 .kicked { position: absolute; inset: 0; background: rgba(7, 14, 26, .82); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); opacity: 0; visibility: hidden; transition: opacity 260ms ease, visibility 260ms; }
 .is-off .kicked { opacity: 1; visibility: visible; }
-.kicked-card { position: absolute; left: 24px; bottom: 24px; width: 400px; max-width: calc(100% - 48px); border-radius: 12px; background: #1C2232; border: 1px solid #343C52; overflow: hidden; }
-.kicked-card strong { display: block; padding: 14px 18px; border-bottom: 1px solid #343C52; font-size: 15px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.kicked-card p { padding: 14px 18px 0; font-size: 14px; line-height: 1.5; color: var(--muted); }
-.kicked-btn { display: block; width: max-content; margin: 14px 18px 16px auto; padding: 8px 16px; border-radius: 8px; background: var(--blue); color: #fff; font-size: 14px; font-weight: 600; }
+/* Mirrors Zalo Web's own "open in another tab" dialog. */
+.kicked-card { position: absolute; left: 24px; bottom: 24px; width: 560px; max-width: calc(100% - 48px); border-radius: 12px; background: #242528; border: 1px solid #3B3C40; box-shadow: 0 24px 60px -20px rgba(0, 0, 0, .7); overflow: hidden; color: #E9E9EB; }
+.kicked-card strong { display: block; padding: 18px 22px; border-bottom: 1px solid #3B3C40; font-size: 17px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.kicked-card p { padding: 18px 22px 0; font-size: 15px; line-height: 1.4; color: #DCDCDF; }
+.kicked-btn { display: block; width: max-content; margin: 18px 22px 20px auto; padding: 11px 22px; border-radius: 10px; background: #2F6BF5; color: #fff; font-size: 16px; font-weight: 600; }
 .popup { position: absolute; top: 98px; right: clamp(10px, 2vw, 22px); width: 280px; padding: 0 12px 0 14px; border-radius: 14px; background: var(--bg); border: 1px solid var(--edge-2); box-shadow: 0 30px 80px -20px rgba(0, 0, 0, .7); }
 .popup-head { height: 48px; display: flex; align-items: center; gap: 8px; }
 .popup-head .lockup span { font-size: 18px; line-height: 20px; }
 .popup .count { display: inline-grid; place-items: center; min-width: 20px; height: 20px; padding: 0 6px; border-radius: 999px; background: var(--green); color: #fff; font-size: 12px; font-weight: 700; }
-.popup-body { height: 150px; display: grid; place-items: center; }
+.popup-body { position: relative; height: 150px; display: grid; place-items: center; }
+.try { position: absolute; top: 6px; left: 50%; transform: translateX(-50%); padding: 4px 10px; border-radius: 999px; background: var(--text); color: var(--bg); font-size: 12px; font-weight: 700; white-space: nowrap; pointer-events: none; transition: opacity 200ms ease; }
+.try::after { content: ""; position: absolute; left: 50%; bottom: -4px; width: 8px; height: 8px; margin-left: -4px; background: inherit; transform: rotate(45deg); }
+.touched .try { opacity: 0; }
+.switch::after { content: ""; position: absolute; inset: -7px; border-radius: 999px; border: 2px solid rgba(77, 148, 255, .8); opacity: 0; pointer-events: none; }
 .switch { position: relative; width: 128px; height: 68px; padding: 0; border-radius: 999px; cursor: pointer; border: 1px solid var(--blue-edge); background: var(--blue); box-shadow: 0 0 0 6px rgba(0, 104, 255, .1), 0 14px 40px -6px rgba(0, 104, 255, .6); transition: background-color 220ms ease, box-shadow 220ms ease, border-color 220ms ease; }
 .knob { position: absolute; top: 5px; left: 65px; width: 56px; height: 56px; border-radius: 999px; display: grid; place-items: center; background: #fff; color: var(--blue); box-shadow: 0 4px 12px rgba(0, 0, 0, .4); transition: left 220ms var(--ease), background-color 220ms ease, color 220ms ease; }
 .switch[aria-checked="false"] { border-color: var(--edge-2); background: #18243A; box-shadow: inset 0 2px 6px rgba(0, 0, 0, .35); }
@@ -132,14 +137,8 @@ svg { flex: 0 0 auto; }
 .card p { margin-top: 10px; font-size: 15px; line-height: 1.6; color: var(--muted); }
 .grid { margin-top: 48px; display: flex; flex-wrap: wrap; gap: 16px; }
 .grid > * { flex: 1 1 280px; min-width: 0; }
-.how-note { margin-top: 20px; max-width: 640px; font-size: 16px; line-height: 1.6; color: var(--muted); }
-.step-no { font: 600 14px var(--mono); color: var(--blue-soft); }
-.step h3 { margin-top: 18px; }
 
-.hood { margin-top: 16px; padding: clamp(24px, 4vw, 40px); }
-.hood-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px; }
-.hood-head p { margin-top: 0; max-width: 560px; }
-.flow { margin-top: 36px; display: flex; align-items: center; justify-content: center; gap: 12px; }
+.flow { display: flex; align-items: center; justify-content: center; gap: 12px; }
 .flow-stack { display: flex; flex-direction: column; gap: 10px; }
 .node { width: 150px; padding: 14px 16px; border-radius: 14px; background: var(--bg); border: 1px solid var(--edge-2); font-size: 15px; font-weight: 600; text-align: center; }
 .node small { display: block; margin-top: 4px; font: 400 12px var(--mono); color: var(--faint); }
@@ -154,14 +153,10 @@ svg { flex: 0 0 auto; }
 .bento { margin-top: 48px; display: flex; flex-direction: column; gap: 16px; }
 .bento-row { display: flex; flex-wrap: wrap; gap: 16px; }
 .tile { flex: 1 1 260px; min-width: 0; border-radius: 24px; padding: 32px; display: flex; flex-direction: column; justify-content: space-between; gap: 28px; }
-.tile.wide { flex: 2 1 520px; }
 .tile h3 { font-size: 22px; }
-.chips { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
-.chip { height: 36px; padding: 0 14px; display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; background: var(--bg); border: 1px solid var(--edge-2); font-size: 13px; color: #DDE7F5; }
-.chip.solid { background: var(--blue); border-color: var(--blue); color: #fff; font-weight: 600; }
-.chips svg { color: var(--blue-edge); }
+.hub-tile { gap: 40px; }
+.hub-tile p { max-width: 680px; }
 .badge-icon { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 14px; background: rgba(0, 104, 255, .16); color: var(--blue-soft); }
-.badge-icon.green { background: rgba(0, 135, 90, .16); color: var(--ok); }
 .big { font-size: 44px; font-weight: 700; letter-spacing: -.04em; line-height: 1; color: var(--blue-soft); }
 .tab-count { display: flex; align-items: center; gap: 10px; height: 48px; font-size: 15px; color: var(--faint); }
 .tab-count b { display: inline-grid; place-items: center; min-width: 36px; height: 36px; padding: 0 10px; border-radius: 999px; background: var(--green); color: #fff; font-size: 18px; }
@@ -182,12 +177,12 @@ svg { flex: 0 0 auto; }
 .limits h3 { font-size: 18px; }
 .limits p { margin-top: 8px; }
 
-.cta { position: relative; overflow-x: clip; text-align: center; padding: clamp(80px, 10vw, 128px) 0; border-top: 1px solid var(--line); }
-.cta .glow { top: 50%; width: 900px; height: 520px; margin: -260px 0 0 -450px; opacity: .75; }
-.cta .wrap { position: relative; display: flex; flex-direction: column; align-items: center; }
-.cta h2 { margin-top: 28px; font-size: clamp(36px, 5.6vw, 68px); line-height: 1; font-weight: 700; letter-spacing: -.04em; }
-.cta p { margin-top: 18px; font-size: 17px; color: var(--muted); }
-.cta .actions { margin-top: 32px; }
+.install > * { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; padding: 32px; border-radius: 24px; }
+.install h3 { font-size: 22px; }
+.install p { margin-top: 0; }
+.install .btn { margin-top: auto; }
+.steps { margin: 0 0 8px; padding-left: 20px; font-size: 15px; line-height: 1.6; color: var(--muted); }
+.steps li + li { margin-top: 8px; }
 
 .footer { border-top: 1px solid var(--line); }
 .footer .wrap { padding-block: 32px 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; }
@@ -226,17 +221,26 @@ svg { flex: 0 0 auto; }
   .chat { padding: 20px 14px; }
   .popup { right: 8px; }
   .kicked-card { left: 16px; bottom: 16px; max-width: calc(100% - 32px); }
+  .kicked-card strong { padding: 14px 16px; font-size: 15px; }
+  .kicked-card p { padding: 14px 16px 0; font-size: 14px; }
+  .kicked-btn { margin: 14px 16px 16px auto; padding: 9px 18px; font-size: 15px; }
   .tile, .card { padding: 24px; }
   .checks { padding: 4px 20px; }
 }
 
 @keyframes rise { from { opacity: 0; transform: translateY(16px); } }
+@keyframes ping { 0% { opacity: .9; transform: scale(1); } 70%, 100% { opacity: 0; transform: scale(1.28, 1.5); } }
+@keyframes bob { 50% { transform: translate(-50%, -4px); } }
+@keyframes nudge { 0%, 78%, 100% { transform: none; } 84% { transform: translateX(-8px); } 90% { transform: translateX(3px); } }
 @keyframes reveal { from { opacity: 0; transform: translateY(28px); } }
 @media (prefers-reduced-motion: no-preference) {
   .hero .wrap > * { animation: rise 700ms var(--ease) both; }
   .hero .wrap > :nth-child(2) { animation-delay: 60ms; }
   .hero .wrap > :nth-child(3) { animation-delay: 120ms; }
   .hero .wrap > :nth-child(n+4) { animation-delay: 180ms; }
+  .demo:not(.touched) .switch::after { animation: ping 1.8s cubic-bezier(0, 0, .2, 1) infinite; }
+  .demo:not(.touched) .try { animation: bob 1.4s ease-in-out infinite; }
+  .demo:not(.touched) .knob { animation: nudge 3.6s ease-in-out 1.2s infinite; }
   @supports (animation-timeline: view()) {
     .reveal { animation: reveal linear both; animation-timeline: view(); animation-range: entry 0% entry 35%; }
   }
