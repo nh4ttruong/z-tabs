@@ -1,0 +1,2 @@
+# exclude media
+assets/media export-ignore

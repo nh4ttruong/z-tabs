@@ -1,0 +1,16 @@
+{
+  "name": "z-tabs",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Browser extension: open Zalo Web in many tabs that share one connection.",
+  "license": "MIT",
+  "scripts": {
+    "test": "node test/e2e.js",
+    "icons": "node tools/build-icons.js",
+    "zip": "node tools/pack.js",
+    "version": "perl -pi -e 's/\"version\": \"[^\"]*\"/\"version\": \"$ENV{npm_package_version}\"/' manifest.json && git add manifest.json"
+  },
+  "devDependencies": {
+    "playwright": "1.63.0"
+  }
+}

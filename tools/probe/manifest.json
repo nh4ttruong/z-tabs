@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Z Tabs Probe (dev)",
+  "version": "0.4.0",
+  "description": "Dev tool: logs Zalo Web's tab-lock and websocket behaviour (metadata only).",
+  "permissions": ["scripting", "activeTab"],
+  "host_permissions": ["https://chat.zalo.me/*"],
+  "content_scripts": [
+    { "matches": ["https://chat.zalo.me/*"], "js": ["probe.js"], "run_at": "document_start", "world": "MAIN", "all_frames": true }
+  ],
+  "action": { "default_title": "Z Tabs Probe", "default_popup": "popup.html" }
+}

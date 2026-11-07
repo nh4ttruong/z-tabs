@@ -1,0 +1,112 @@
+name: CI
+
+on:
+  # Only main: other branches and pull requests run nothing.
+  push:
+    branches: [main]
+    paths-ignore: ["**.md"]
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: Version bump (none releases the current version)
+        type: choice
+        options: [patch, minor, major, none]
+      edge:
+        description: Submit to Edge Add-ons
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 26
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps --no-shell chromium
+      - run: npm test
+      - run: npm run zip
+      - uses: actions/upload-artifact@v7
+        with:
+          name: z-tabs-${{ github.sha }}
+          path: dist/*.zip
+          if-no-files-found: error
+
+  # Separate job so "Re-run failed jobs" on release never bumps twice.
+  bump:
+    needs: build
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      sha: ${{ steps.bump.outputs.sha }}
+      tag: ${{ steps.bump.outputs.tag }}
+    steps:
+      - uses: actions/checkout@v7
+      - id: bump
+        env:
+          BUMP: ${{ inputs.bump }}
+        run: |
+          if [ "$BUMP" != none ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            npm version "$BUMP" -m "chore(release): v%s"
+            git push --follow-tags
+          fi
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          echo "tag=v$(node -p "require('./manifest.json').version")" >> "$GITHUB_OUTPUT"
+
+  release:
+    needs: bump
+    runs-on: ubuntu-latest
+    environment: Extension
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SHA: ${{ needs.bump.outputs.sha }}
+      TAG: ${{ needs.bump.outputs.tag }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ needs.bump.outputs.sha }}
+      - run: npm run zip
+      - name: GitHub release
+        run: gh release upload "$TAG" dist/*.zip --clobber || gh release create "$TAG" dist/*.zip --target "$SHA" --generate-notes
+      - name: Edge Add-ons
+        if: inputs.edge && vars.EDGE_PRODUCT_ID
+        env:
+          API: https://api.addons.microsoftedge.microsoft.com/v1/products/${{ vars.EDGE_PRODUCT_ID }}/submissions
+          EDGE_CLIENT_ID: ${{ secrets.EDGE_CLIENT_ID }}
+          EDGE_API_KEY: ${{ secrets.EDGE_API_KEY }}
+        run: |
+          auth=(-H "Authorization: ApiKey $EDGE_API_KEY" -H "X-ClientID: $EDGE_CLIENT_ID")
+          # Starts an async Edge operation, then polls it until it settles.
+          operation() {
+            local url=$1 id body
+            shift
+            id=$(curl -sSf -o /dev/null -w '%header{location}' "${auth[@]}" "$@" "$url")
+            for _ in $(seq 80); do
+              sleep 15
+              body=$(curl -sSf "${auth[@]}" "$url/operations/${id##*/}")
+              case $(jq -r .status <<<"$body") in
+                Succeeded) return 0 ;;
+                Failed) echo "$body" >&2; return 1 ;;
+              esac
+            done
+            echo "Timed out: $url" >&2
+            return 1
+          }
+          operation "$API/draft/package" -H "Content-Type: application/zip" --data-binary "@dist/z-tabs-${TAG#v}.zip"
+          operation "$API" -H "Content-Type: text/plain" --data "$TAG from $GITHUB_REPOSITORY"

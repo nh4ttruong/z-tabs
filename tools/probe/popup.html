@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<style>
+  body { font: 13px system-ui, sans-serif; width: 300px; margin: 10px; }
+  h1 { font-size: 14px; margin: 0 0 8px; }
+  label { display: block; margin: 4px 0; }
+  small { color: #666; }
+  button { margin: 6px 4px 0 0; }
+  pre { background: #f4f4f4; padding: 6px; max-height: 220px; overflow: auto; font-size: 11px; white-space: pre-wrap; }
+</style>
+</head>
+<body>
+  <h1>Zalo Web Probe <small id="tab"></small></h1>
+  <div id="cfg">
+    <label><input type="checkbox" data-k="blockWS"> blockWS <small>— tab này không mở websocket thật</small></label>
+    <label><input type="checkbox" data-k="muteBC"> muteBC <small>— cô lập BroadcastChannel</small></label>
+    <label><input type="checkbox" data-k="muteSingleton"> muteSingleton <small>— bỏ qua tín hiệu khoá tab (sh_singleton_web_app)</small></label>
+    <label><input type="checkbox" data-k="muteStorage"> muteStorage <small>— bỏ qua storage event</small></label>
+    <label><input type="checkbox" data-k="muteLocks"> muteLocks <small>— Web Lock luôn được cấp</small></label>
+    <label><input type="checkbox" data-k="verbose"> verbose <small>— log mọi event ra console</small></label>
+  </div>
+  <div><input id="markText" placeholder="ghi chú, vd: bắt đầu xoá tin" style="width:190px"> <button id="mark">Đánh dấu</button></div>
+  <button id="apply">Áp dụng &amp; reload</button>
+  <button id="download">Tải report JSON</button>
+  <button id="refresh">Làm mới</button>
+  <p><small>Cấu hình lưu riêng từng tab, dạng 1 JSON ở <b>sessionStorage["__zprobe_cfg"]</b> (không phải localStorage), chỉ xuất hiện sau khi bấm "Áp dụng &amp; reload".</small></p>
+  <pre id="out">…</pre>
+  <script src="popup.js"></script>
+</body>
+</html>

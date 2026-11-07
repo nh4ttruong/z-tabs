@@ -1,0 +1,35 @@
+<!doctype html><meta charset="utf-8"><title>mock Zalo</title>
+<script>
+// Mimics the Zalo Web client parts Z Tabs touches: tab lock, one socket, reconnect, encrypted replies checked by reqId.
+const me = crypto.randomUUID(), TAB = Math.random().toString(36).slice(2, 6);
+localStorage.setItem("sh_singleton_web_app", me);
+addEventListener("storage", (e) => {
+  if (e.key === "sh_singleton_web_app" && e.newValue !== me) { window.locked = true; ws.close(1000); }
+});
+window.stats = { pushes: 0, kicked: 0, myResp: 0, badResp: 0 };
+const enc = (cmd, sub, obj) => { const body = new TextEncoder().encode(JSON.stringify(obj)); const b = new Uint8Array(4 + body.length); b.set([1, cmd & 255, cmd >> 8, sub]); b.set(body, 4); return b; };
+const b64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
+let ws, n = 0, timer, key;
+async function decode(body) {
+  const b = b64(decodeURIComponent(body.data));
+  const k = await crypto.subtle.importKey("raw", b64(key), { name: "AES-GCM" }, false, ["decrypt"]);
+  const plain = await crypto.subtle.decrypt({ name: "AES-GCM", iv: b.subarray(0, 16), additionalData: b.subarray(16, 32), tagLength: 128 }, k, b.subarray(32));
+  return JSON.parse(await new Response(new Blob([plain]).stream().pipeThrough(new DecompressionStream("deflate"))).text());
+}
+function connect() {
+  ws = new WebSocket("wss://ws1-msg.chat.zalo.me/" + location.search);
+  ws.binaryType = "arraybuffer";
+  ws.onmessage = (e) => {
+    const u = new Uint8Array(e.data), cmd = u[1] | (u[2] << 8), body = JSON.parse(new TextDecoder().decode(u.subarray(4)));
+    if (cmd === 1) {
+      key = body.key; clearInterval(timer);
+      timer = setInterval(() => ws.readyState === 1 && ws.send(enc(510, 1, { reqId: TAB + "-" + ++n })), 400);
+    }
+    if (cmd === 501) stats.pushes++;
+    if (cmd === 510) decode(body).then((d) => d.reqId.startsWith(TAB + "-"), () => false).then((mine) => (mine ? stats.myResp++ : stats.badResp++));
+    if (cmd === 3000) stats.kicked++;
+  };
+  ws.onclose = () => { clearInterval(timer); if (!window.locked) setTimeout(connect, 1000); };
+}
+connect();
+</script>

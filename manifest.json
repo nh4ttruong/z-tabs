@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "Z Tabs",
+  "short_name": "Z Tabs",
+  "version": "1.0.0",
+  "description": "Open Zalo Web in as many tabs as you like — they share one connection, so no tab gets kicked out.",
+  "minimum_chrome_version": "111",
+  "permissions": [
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://chat.zalo.me/*"
+  ],
+  "background": {
+    "service_worker": "src/background/service-worker.js"
+  },
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_icon": {
+      "16": "icons/z-off-16.png",
+      "32": "icons/z-off-32.png",
+      "48": "icons/z-off-48.png",
+      "128": "icons/z-off-128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/z-16.png",
+    "32": "icons/z-32.png",
+    "48": "icons/z-48.png",
+    "128": "icons/z-128.png"
+  }
+}
