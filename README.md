@@ -5,7 +5,7 @@
 
 # Z Tabs
 
-[Install](#install) • [How it works](#how-it-works) • [Limits](#limits) • [Develop](#develop)
+[Website](https://nh4ttruong.github.io/z-tabs/) • [Install](#install) • [How it works](#how-it-works) • [Limits](#limits) • [Develop](#develop)
 
 </div>
 

@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en" data-title-vi="Z Tabs — Mở Zalo Web thả ga">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Z Tabs — Zalo Web in every tab</title>
+<meta name="description" content="Browser extension that opens Zalo Web in as many tabs as you like. All tabs share one connection, so none gets kicked out with “Zalo is open in another tab”.">
+<meta name="theme-color" content="#0B1424">
+<link rel="canonical" href="https://nh4ttruong.github.io/z-tabs/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nh4ttruong.github.io/z-tabs/">
+<meta property="og:title" content="Z Tabs — Zalo Web in every tab">
+<meta property="og:description" content="Open Zalo Web in as many tabs as you like. They share one connection, so none gets kicked out.">
+<meta property="og:image" content="https://nh4ttruong.github.io/z-tabs/og.png">
+<meta property="og:image:width" content="1400">
+<meta property="og:image:height" content="560">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="fonts/inter-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="site.css">
+<script src="site.js" defer></script>
+</head>
+<body>
+<svg width="0" height="0" style="position: absolute" aria-hidden="true">
+  <symbol id="logo" viewBox="0 0 48 48"><rect x="10" y="4" width="34" height="30" rx="8" fill="#4D94FF" fill-opacity=".45"/><rect x="4" y="12" width="34" height="32" rx="9" fill="#0068FF"/><path d="M13 21h16L13 36h16" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.2c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.36-3.37-1.36-.46-1.18-1.11-1.5-1.11-1.5-.91-.63.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.35 1.11 2.92.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.13-4.56-5.04 0-1.11.39-2.02 1.03-2.73-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.04a9.4 9.4 0 0 1 5 0c1.91-1.32 2.75-1.04 2.75-1.04.55 1.4.2 2.44.1 2.7.64.71 1.03 1.62 1.03 2.73 0 3.92-2.34 4.78-4.57 5.03.36.32.68.94.68 1.9v2.81c0 .27.18.6.69.49A10.2 10.2 0 0 0 22 12.2C22 6.58 17.52 2 12 2Z"/></symbol>
+  <symbol id="download" viewBox="0 0 24 24"><g class="icon"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></g></symbol>
+  <symbol id="check" viewBox="0 0 24 24"><path class="icon" d="m5 12 5 5 9-10"/></symbol>
+  <symbol id="arrow-both" viewBox="0 0 150 12" preserveAspectRatio="none"><g class="icon"><path d="M2 6h146"/><path d="m141 1 7 5-7 5"/><path d="m9 1-7 5 7 5"/></g></symbol>
+</svg>
+
+<header class="header">
+  <div class="wrap">
+    <a class="lockup" href="./" aria-label="Z Tabs"><svg width="30" height="30" aria-hidden="true"><use href="#logo"/></svg><span>Tabs</span></a>
+    <div class="spacer"></div>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="vi" aria-pressed="false">VI</button>
+    </div>
+    <a class="btn btn-ghost btn-small" href="https://github.com/nh4ttruong/z-tabs"><svg width="18" height="18" aria-hidden="true"><use href="#github"/></svg>GitHub</a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="pill"><b data-i18n="free">Free</b><span data-i18n="pill">Browser extension for Zalo Web</span></span>
+    <h1 data-i18n="h1">Zalo Web in <span class="accent">every tab.</span></h1>
+    <p class="lead" data-i18n="lead">Open chat.zalo.me in as many tabs as you like. They share one connection, so none of them gets kicked out with “Zalo is open in another tab”.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="https://github.com/nh4ttruong/z-tabs/releases/latest"><svg width="18" height="18" aria-hidden="true"><use href="#download"/></svg><span data-i18n="download">Download the extension</span></a>
+      <a class="btn btn-ghost" href="#how" data-i18n="see-how">See how it works</a>
+    </div>
+    <p class="fine" data-i18n="fine">Chrome and Edge 111+. Open source, MIT license.</p>
+
+    <div class="demo">
+      <div class="browser" aria-hidden="true">
+        <div class="tabbar">
+          <div class="lights"><i></i><i></i><i></i></div>
+          <div class="tab active kickable"><i class="fav"></i><span class="name">Zalo Web</span><i class="dot"></i></div>
+          <div class="tab kickable"><i class="fav"></i><span class="name">Zalo Web</span><i class="dot"></i></div>
+          <div class="tab"><i class="fav"></i><span class="name">Zalo Web</span><i class="dot"></i></div>
+        </div>
+        <div class="toolbar">
+          <div class="address">chat.zalo.me</div>
+          <div class="ext"><svg width="20" height="20"><use href="#logo"/></svg><span class="count">3</span></div>
+        </div>
+        <div class="page">
+          <div class="sidebar">
+            <div class="row" style="--a: 72%; --b: 48%"><span></span></div>
+            <div class="row" style="--a: 58%; --b: 66%"><span></span></div>
+            <div class="row" style="--a: 80%; --b: 40%"><span></span></div>
+            <div class="row" style="--a: 50%; --b: 58%"><span></span></div>
+            <div class="row" style="--a: 66%; --b: 44%"><span></span></div>
+            <div class="row" style="--a: 74%; --b: 52%"><span></span></div>
+            <div class="row" style="--a: 54%; --b: 62%"><span></span></div>
+          </div>
+          <div class="chat">
+            <i style="--w: 46%"></i>
+            <i style="--w: 32%"></i>
+            <i class="me" style="--w: 40%"></i>
+            <i style="--w: 54%"></i>
+            <i class="me" style="--w: 28%"></i>
+          </div>
+          <div class="kicked">
+            <div class="kicked-card">
+              <strong><svg width="18" height="18" viewBox="0 0 24 24"><g class="icon"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 3.9 2.4 18a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></g></svg><span data-i18n="kicked-title">Zalo is open in another tab</span></strong>
+              <p data-i18n="kicked-body">This tab lost its connection. Only the newest tab stays signed in.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="popup">
+        <div class="popup-head">
+          <span class="lockup"><svg width="22" height="22" aria-hidden="true"><use href="#logo"/></svg><span>Tabs</span></span>
+          <span class="count" aria-hidden="true">3</span>
+        </div>
+        <div class="popup-body">
+          <button class="switch" id="switch" type="button" role="switch" aria-checked="true" aria-label="Z Tabs">
+            <span class="knob"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path class="icon" stroke-width="2.8" d="M6.5 7h11l-11 10h11"/></svg></span>
+          </button>
+        </div>
+        <p class="status" aria-live="polite"><span class="status-on" data-i18n="status-on">3 tabs, 1 shared connection</span><span class="status-off" data-i18n="status-off">Off: only the newest tab stays connected</span></p>
+        <div class="popup-foot">Crafted by&nbsp;<b>@nh4ttruong</b></div>
+      </div>
+    </div>
+    <p class="hint" data-i18n="hint">Try it: switch Z Tabs off and watch the tab you are on get kicked out.</p>
+  </div>
+</section>
+
+<section class="section" id="how">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow" data-i18n="how-eyebrow">How it works</p>
+      <h2 data-i18n="how-title">Install once, then forget it is there.</h2>
+    </div>
+    <div class="grid reveal">
+      <div class="card step">
+        <div class="step-no">01</div>
+        <h3 data-i18n="s1-title">Download</h3>
+        <p data-i18n="s1-body">Grab the latest <code>z-tabs-x.y.z.zip</code> from <a href="https://github.com/nh4ttruong/z-tabs/releases/latest">GitHub Releases</a> and unzip it.</p>
+      </div>
+      <div class="card step">
+        <div class="step-no">02</div>
+        <h3 data-i18n="s2-title">Load it</h3>
+        <p data-i18n="s2-body">Open <code>chrome://extensions</code> or <code>edge://extensions</code>, turn on Developer mode, click Load unpacked and pick the folder.</p>
+      </div>
+      <div class="card step">
+        <div class="step-no">03</div>
+        <h3 data-i18n="s3-title">Flip the switch</h3>
+        <p data-i18n="s3-body">Click the Z Tabs icon and turn it on. Then open as many Zalo tabs as you like.</p>
+      </div>
+    </div>
+
+    <div class="card hood reveal">
+      <div class="hood-head">
+        <h3 data-i18n="hood-title">Under the hood</h3>
+        <p data-i18n="hood-body">Zalo Web allows one tab and one chat socket per account. One tab becomes the hub and holds the only socket; the others talk through it.</p>
+      </div>
+      <div class="flow" role="img" aria-label="Tab 2 and Tab 3 talk to Tab 1, the hub, over BroadcastChannel; the hub holds the one WebSocket to chat.zalo.me.">
+        <div class="flow-stack"><div class="node">Tab 2</div><div class="node">Tab 3</div></div>
+        <div class="link"><span data-i18n="link-tabs">BroadcastChannel</span><svg aria-hidden="true"><use href="#arrow-both"/></svg></div>
+        <div class="node hub"><span data-i18n="hub">Tab 1, the hub</span><small data-i18n="hub-note">Web Lock ztabs:hub</small></div>
+        <div class="link"><span data-i18n="link-ws">1 WebSocket</span><svg aria-hidden="true"><use href="#arrow-both"/></svg></div>
+        <div class="node server"><span data-i18n="servers">Zalo servers</span><small>chat.zalo.me</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section deep">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow" data-i18n="why-eyebrow">Why Z Tabs</p>
+      <h2 data-i18n="why-title">Small extension, no surprises.</h2>
+    </div>
+    <div class="bento">
+      <div class="bento-row reveal">
+        <div class="card tile wide">
+          <div class="chips" aria-hidden="true">
+            <span class="chip"><i class="dot"></i>Tab 1</span>
+            <span class="chip"><i class="dot"></i>Tab 2</span>
+            <span class="chip"><i class="dot"></i>Tab 3</span>
+            <span class="chip"><i class="dot"></i>Tab 4</span>
+            <svg width="40" height="12" viewBox="0 0 40 12"><g class="icon"><path d="M2 6h34"/><path d="m29 1 7 5-7 5"/></g></svg>
+            <span class="chip solid" data-i18n="one-conn">1 connection</span>
+          </div>
+          <div>
+            <h3 data-i18n="f1-title">One connection, every tab</h3>
+            <p data-i18n="f1-body">Every tab ignores the others’ “open in another tab” signal. The hub replays the handshake to each new tab and routes every reply to the tab that asked.</p>
+          </div>
+        </div>
+        <div class="card tile">
+          <span class="badge-icon green"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><g class="icon" stroke-width="1.75"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6L12 3Z"/><path d="m9 12 2 2 4-4"/></g></svg></span>
+          <div>
+            <h3 data-i18n="f2-title">Nothing leaves your browser</h3>
+            <p data-i18n="f2-body">No servers, no analytics, no logs. Z Tabs only runs on chat.zalo.me.</p>
+          </div>
+        </div>
+      </div>
+      <div class="bento-row reveal">
+        <div class="card tile">
+          <span class="badge-icon"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><g class="icon" stroke-width="1.75"><path d="M20 11a8 8 0 0 0-14.9-3.9"/><path d="M4 4v4h4"/><path d="M4 13a8 8 0 0 0 14.9 3.9"/><path d="M20 20v-4h-4"/></g></svg></span>
+          <div>
+            <h3 data-i18n="f3-title">The hub hands off</h3>
+            <p data-i18n="f3-body">Close or freeze the hub tab and another one takes over within a few seconds.</p>
+          </div>
+        </div>
+        <div class="card tile">
+          <div class="big" data-i18n="ten-s">10 s</div>
+          <div>
+            <h3 data-i18n="f4-title">Safe fallback</h3>
+            <p data-i18n="f4-body">If Zalo changes and no handshake arrives within 10 seconds, every tab falls back to plain Zalo Web.</p>
+          </div>
+        </div>
+        <div class="card tile">
+          <div class="tab-count" aria-hidden="true"><b>5</b><span data-i18n="tabs-open">tabs open</span></div>
+          <div>
+            <h3 data-i18n="f5-title">Count at a glance</h3>
+            <p data-i18n="f5-body">A green badge shows how many Zalo tabs are open, from three up, on the toolbar icon too.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="privacy">
+  <div class="wrap split">
+    <div class="reveal">
+      <p class="eyebrow" data-i18n="privacy-eyebrow">Privacy</p>
+      <h2 data-i18n="privacy-title">Your chats stay between you and Zalo.</h2>
+      <p class="lead-sm" data-i18n="privacy-body">Z Tabs keeps no logs and sends nothing anywhere. Your tabs talk to Zalo exactly as before, just through one shared connection.</p>
+      <a class="more" href="privacy.html"><span data-i18n="privacy-link">Read the privacy policy</span><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><g class="icon"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></g></svg></a>
+    </div>
+    <div class="card checks reveal">
+      <div class="check"><svg width="20" height="20" aria-hidden="true"><use href="#check"/></svg><div><strong data-i18n="p1-title">No servers</strong><p data-i18n="p1-body">Z Tabs has nowhere to send your data, and no account to sign in to.</p></div></div>
+      <div class="check"><svg width="20" height="20" aria-hidden="true"><use href="#check"/></svg><div><strong data-i18n="p2-title">No analytics, no logs</strong><p data-i18n="p2-body">Nothing is tracked, counted or stored outside your browser.</p></div></div>
+      <div class="check"><svg width="20" height="20" aria-hidden="true"><use href="#check"/></svg><div><strong data-i18n="p3-title">Off means off</strong><p data-i18n="p3-body">Turn it off and reload: you are back on plain Zalo Web.</p></div></div>
+      <div class="check"><svg width="20" height="20" aria-hidden="true"><use href="#check"/></svg><div><strong data-i18n="p4-title">Open source</strong><p data-i18n="p4-body">MIT licensed. Every line is on <a href="https://github.com/nh4ttruong/z-tabs">GitHub</a>.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section deep" id="limits">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow" data-i18n="limits-eyebrow">Good to know</p>
+      <h2 data-i18n="limits-title">The honest limits.</h2>
+    </div>
+    <div class="grid limits reveal">
+      <div class="card"><h3 data-i18n="l1-title">Not an official Zalo feature</h3><p data-i18n="l1-body">A Zalo Web update may break it. When it does, the 10-second fallback keeps your session usable.</p></div>
+      <div class="card"><h3 data-i18n="l2-title">One browser at a time</h3><p data-i18n="l2-body">Zalo PC, or Zalo Web in another browser, still takes the single connection and disconnects every tab here.</p></div>
+      <div class="card"><h3 data-i18n="l3-title">Shared storage</h3><p data-i18n="l3-body">Tabs share Zalo’s local database, so a conversation list may rarely need a reload.</p></div>
+      <div class="card"><h3 data-i18n="l4-title">Chrome and Edge</h3><p data-i18n="l4-body">Needs Chrome or Edge 111 or newer. There is no Safari or Firefox version.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="glow" aria-hidden="true"></div>
+  <div class="wrap reveal">
+    <svg width="64" height="64" aria-hidden="true"><use href="#logo"/></svg>
+    <h2 data-i18n="cta-title">Open one more tab.</h2>
+    <p data-i18n="cta-body">Free, open source, no account to create.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="https://github.com/nh4ttruong/z-tabs/releases/latest"><svg width="18" height="18" aria-hidden="true"><use href="#download"/></svg><span data-i18n="download">Download the extension</span></a>
+      <a class="btn btn-ghost" href="https://github.com/nh4ttruong/z-tabs" data-i18n="source">View source</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-brand">
+      <a class="lockup" href="./" aria-label="Z Tabs"><svg width="24" height="24" aria-hidden="true"><use href="#logo"/></svg><span>Tabs</span></a>
+      <span data-i18n="credit">Cooked by <a href="https://github.com/nh4ttruong">@nh4ttruong</a>. Not affiliated with Zalo.</span>
+    </div>
+    <nav aria-label="Footer">
+      <a href="https://github.com/nh4ttruong/z-tabs">GitHub</a>
+      <a href="https://github.com/nh4ttruong/z-tabs/releases" data-i18n="releases">Releases</a>
+      <a href="privacy.html" data-i18n="privacy">Privacy</a>
+      <a href="https://github.com/nh4ttruong/z-tabs/blob/main/LICENSE" data-i18n="license">MIT License</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>
