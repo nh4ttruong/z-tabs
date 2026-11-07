@@ -26,6 +26,7 @@
   <symbol id="logo" viewBox="0 0 48 48"><rect x="10" y="4" width="34" height="30" rx="8" fill="#4D94FF" fill-opacity=".45"/><rect x="4" y="12" width="34" height="32" rx="9" fill="#0068FF"/><path d="M13 21h16L13 36h16" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.2c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.36-3.37-1.36-.46-1.18-1.11-1.5-1.11-1.5-.91-.63.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.35 1.11 2.92.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.13-4.56-5.04 0-1.11.39-2.02 1.03-2.73-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.04a9.4 9.4 0 0 1 5 0c1.91-1.32 2.75-1.04 2.75-1.04.55 1.4.2 2.44.1 2.7.64.71 1.03 1.62 1.03 2.73 0 3.92-2.34 4.78-4.57 5.03.36.32.68.94.68 1.9v2.81c0 .27.18.6.69.49A10.2 10.2 0 0 0 22 12.2C22 6.58 17.52 2 12 2Z"/></symbol>
   <symbol id="download" viewBox="0 0 24 24"><g class="icon"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></g></symbol>
+  <symbol id="plus" viewBox="0 0 24 24"><g class="icon"><path d="M12 5v14"/><path d="M5 12h14"/></g></symbol>
   <symbol id="check" viewBox="0 0 24 24"><path class="icon" d="m5 12 5 5 9-10"/></symbol>
   <symbol id="arrow-both" viewBox="0 0 150 12" preserveAspectRatio="none"><g class="icon"><path d="M2 6h146"/><path d="m141 1 7 5-7 5"/><path d="m9 1-7 5 7 5"/></g></symbol>
 </svg>
@@ -48,11 +49,10 @@
   <div class="wrap">
     <span class="pill"><b data-i18n="free">Free</b><span data-i18n="pill">Browser extension for Zalo Web</span></span>
     <h1 data-i18n="h1">Zalo Web in <span class="accent">every tab.</span></h1>
-    <p class="lead" data-i18n="lead">Open chat.zalo.me in as many tabs as you like. They share one connection, so none of them gets kicked out with “Zalo is open in another tab”.</p>
+    <p class="lead" data-i18n="lead">Open chat.zalo.me in as many tabs as you like. They share one connection, so none of them gets kicked out to the “open in another tab” screen.</p>
     <div class="actions">
-      <a class="btn btn-primary" href="https://github.com/nh4ttruong/z-tabs/releases/latest"><svg width="18" height="18" aria-hidden="true"><use href="#download"/></svg><span data-i18n="download">Download the extension</span></a>
-      <a class="btn btn-ghost" href="#how" data-i18n="see-how">See how it works</a>
-    </div>
+      <a class="btn btn-primary" href="https://microsoftedge.microsoft.com/addons/detail/jofjdigkccpakpapllagcafjgflbmikd"><svg width="18" height="18" aria-hidden="true"><use href="#plus"/></svg><span data-i18n="get-edge">Get it for Edge</span></a>
+      <a class="btn btn-ghost" href="https://github.com/nh4ttruong/z-tabs/releases/latest"><svg width="18" height="18" aria-hidden="true"><use href="#download"/></svg><span data-i18n="get-chrome">Download for Chrome</span></a>    </div>
     <p class="fine" data-i18n="fine">Chrome and Edge 111+. Open source, MIT license.</p>
 
     <div class="demo">
@@ -86,8 +86,9 @@
           </div>
           <div class="kicked">
             <div class="kicked-card">
-              <strong><svg width="18" height="18" viewBox="0 0 24 24"><g class="icon"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 3.9 2.4 18a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></g></svg><span data-i18n="kicked-title">Zalo is open in another tab</span></strong>
-              <p data-i18n="kicked-body">This tab lost its connection. Only the newest tab stays signed in.</p>
+              <strong data-i18n="kicked-title">You are using Zalo in another tab or have been away too long</strong>
+              <p data-i18n="kicked-body">Click Activate to use it in this tab</p>
+              <span class="kicked-btn" data-i18n="kicked-btn">Activate</span>
             </div>
           </div>
         </div>
@@ -116,6 +117,7 @@
     <div class="reveal">
       <p class="eyebrow" data-i18n="how-eyebrow">How it works</p>
       <h2 data-i18n="how-title">Install once, then forget it is there.</h2>
+      <p class="how-note" data-i18n="how-edge">On Edge, <a href="https://microsoftedge.microsoft.com/addons/detail/jofjdigkccpakpapllagcafjgflbmikd">install it from Edge Add-ons</a> and flip the switch. On Chrome, it takes three steps:</p>
     </div>
     <div class="grid reveal">
       <div class="card step">
@@ -126,7 +128,7 @@
       <div class="card step">
         <div class="step-no">02</div>
         <h3 data-i18n="s2-title">Load it</h3>
-        <p data-i18n="s2-body">Open <code>chrome://extensions</code> or <code>edge://extensions</code>, turn on Developer mode, click Load unpacked and pick the folder.</p>
+        <p data-i18n="s2-body">Open <code>chrome://extensions</code>, turn on Developer mode, click Load unpacked and pick the folder.</p>
       </div>
       <div class="card step">
         <div class="step-no">03</div>
@@ -247,9 +249,8 @@
     <h2 data-i18n="cta-title">Open one more tab.</h2>
     <p data-i18n="cta-body">Free, open source, no account to create.</p>
     <div class="actions">
-      <a class="btn btn-primary" href="https://github.com/nh4ttruong/z-tabs/releases/latest"><svg width="18" height="18" aria-hidden="true"><use href="#download"/></svg><span data-i18n="download">Download the extension</span></a>
-      <a class="btn btn-ghost" href="https://github.com/nh4ttruong/z-tabs" data-i18n="source">View source</a>
-    </div>
+      <a class="btn btn-primary" href="https://microsoftedge.microsoft.com/addons/detail/jofjdigkccpakpapllagcafjgflbmikd"><svg width="18" height="18" aria-hidden="true"><use href="#plus"/></svg><span data-i18n="get-edge">Get it for Edge</span></a>
+      <a class="btn btn-ghost" href="https://github.com/nh4ttruong/z-tabs/releases/latest"><svg width="18" height="18" aria-hidden="true"><use href="#download"/></svg><span data-i18n="get-chrome">Download for Chrome</span></a>    </div>
   </div>
 </section>
 </main>
@@ -262,6 +263,7 @@
     </div>
     <nav aria-label="Footer">
       <a href="https://github.com/nh4ttruong/z-tabs">GitHub</a>
+      <a href="https://microsoftedge.microsoft.com/addons/detail/jofjdigkccpakpapllagcafjgflbmikd">Edge Add-ons</a>
       <a href="https://github.com/nh4ttruong/z-tabs/releases" data-i18n="releases">Releases</a>
       <a href="privacy.html" data-i18n="privacy">Privacy</a>
       <a href="https://github.com/nh4ttruong/z-tabs/blob/main/LICENSE" data-i18n="license">MIT License</a>
