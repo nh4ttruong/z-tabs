@@ -101,9 +101,10 @@ svg { flex: 0 0 auto; }
 .chat i.me { align-self: flex-end; background: #0B3D91; }
 .kicked { position: absolute; inset: 0; background: rgba(7, 14, 26, .82); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); opacity: 0; visibility: hidden; transition: opacity 260ms ease, visibility 260ms; }
 .is-off .kicked { opacity: 1; visibility: visible; }
-.kicked-card { position: absolute; left: 24px; bottom: 24px; width: 340px; max-width: calc(100% - 48px); padding: 18px 20px; border-radius: 14px; background: var(--surface-2); border: 1px solid #2A3A57; }
-.kicked-card strong { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; color: var(--warn-text); }
-.kicked-card p { margin-top: 6px; font-size: 13px; line-height: 1.5; color: var(--faint); }
+.kicked-card { position: absolute; left: 24px; bottom: 24px; width: 400px; max-width: calc(100% - 48px); border-radius: 12px; background: #1C2232; border: 1px solid #343C52; overflow: hidden; }
+.kicked-card strong { display: block; padding: 14px 18px; border-bottom: 1px solid #343C52; font-size: 15px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.kicked-card p { padding: 14px 18px 0; font-size: 14px; line-height: 1.5; color: var(--muted); }
+.kicked-btn { display: block; width: max-content; margin: 14px 18px 16px auto; padding: 8px 16px; border-radius: 8px; background: var(--blue); color: #fff; font-size: 14px; font-weight: 600; }
 .popup { position: absolute; top: 98px; right: clamp(10px, 2vw, 22px); width: 280px; padding: 0 12px 0 14px; border-radius: 14px; background: var(--bg); border: 1px solid var(--edge-2); box-shadow: 0 30px 80px -20px rgba(0, 0, 0, .7); }
 .popup-head { height: 48px; display: flex; align-items: center; gap: 8px; }
 .popup-head .lockup span { font-size: 18px; line-height: 20px; }
@@ -131,6 +132,7 @@ svg { flex: 0 0 auto; }
 .card p { margin-top: 10px; font-size: 15px; line-height: 1.6; color: var(--muted); }
 .grid { margin-top: 48px; display: flex; flex-wrap: wrap; gap: 16px; }
 .grid > * { flex: 1 1 280px; min-width: 0; }
+.how-note { margin-top: 20px; max-width: 640px; font-size: 16px; line-height: 1.6; color: var(--muted); }
 .step-no { font: 600 14px var(--mono); color: var(--blue-soft); }
 .step h3 { margin-top: 18px; }
 
@@ -217,7 +219,7 @@ svg { flex: 0 0 auto; }
   .flow-stack .node { width: 130px; }
 }
 @media (max-width: 560px) {
-  .page { height: 420px; }
+  .page { height: 520px; }
   .sidebar { flex-basis: 30%; padding-inline: 10px; }
   .row { gap: 8px; }
   .row::before { width: 28px; height: 28px; }
