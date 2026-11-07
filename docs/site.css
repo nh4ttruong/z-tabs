@@ -183,6 +183,7 @@ svg { flex: 0 0 auto; }
 .install .btn { margin-top: auto; }
 .steps { margin: 0 0 8px; padding-left: 20px; font-size: 15px; line-height: 1.6; color: var(--muted); }
 .steps li + li { margin-top: 8px; }
+.install .note { font-size: 14px; color: var(--faint); }
 
 .footer { border-top: 1px solid var(--line); }
 .footer .wrap { padding-block: 32px 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; }
