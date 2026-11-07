@@ -5,7 +5,7 @@
 
 # Z Tabs
 
-[Install](#install) • [How it works](#how-it-works) • [Limits](#limits) • [Develop](#develop) • [Release](#release)
+[Install](#install) • [How it works](#how-it-works) • [Limits](#limits) • [Develop](#develop)
 
 </div>
 
@@ -80,22 +80,3 @@ npm run zip
 
 To debug a real Zalo tab, run `sessionStorage.setItem("ztabs:debug", "1")` in its console and reload for `[ztabs]` logs; `__ztabs.status()` shows the tab's role and sockets.
 [`tools/probe/`](tools/probe) is a separate dev-only extension that logs Zalo Web's tab-lock and websocket behaviour, for when Zalo changes its protocol.
-
-## Release
-
-Run the **CI** workflow from the Actions tab, or `gh workflow run ci.yml -f bump=patch`.
-After the tests pass, it bumps the version in `package.json` and `manifest.json`, pushes the `vX.Y.Z` tag, publishes a GitHub Release with the zip and submits the zip to Edge Add-ons.
-`bump=none` releases the current version as is, and `edge=false` skips the store.
-Every CI run also keeps the zip as a build artifact.
-
-Edge submission reads these from the `Extension` environment:
-
-| Name | Kind | Value |
-|---|---|---|
-| `EDGE_PRODUCT_ID` | Variable | Product ID from Partner Center |
-| `EDGE_CLIENT_ID` | Secret | Client ID from Partner Center, Publish API |
-| `EDGE_API_KEY` | Secret | API key from Partner Center, Publish API |
-
-The first Edge submission is made by hand in Partner Center; CI only uploads new versions of an existing product.
-The bump pushes to the branch the workflow runs on, so that branch must accept pushes from `github-actions[bot]`.
-Locally, `npm version patch` makes the same commit and tag.
