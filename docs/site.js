@@ -11,7 +11,8 @@ const VI = {
   "kicked-body": "Nhấn kích hoạt để sử dụng trên Tab này",
   "kicked-btn": "Kích hoạt",
   "status-on": "3 tab, chung 1 kết nối",
-  "status-off": "Đang tắt: chỉ tab mới nhất còn kết nối",
+  "status-off": "Đang tắt: chỉ một tab chạy được",
+  "try": "Bấm thử",
   "hint": "Bấm thử: tắt Z Tabs đi là thấy ngay tab đang xem bị đá văng ra.",
   "how-eyebrow": "Cách hoạt động",
   "how-title": "Cài một lần, rồi quên nó đi.",
@@ -118,5 +119,7 @@ const sw = document.getElementById("switch");
 sw?.addEventListener("click", () => {
   const on = sw.getAttribute("aria-checked") !== "true";
   sw.setAttribute("aria-checked", String(on));
-  sw.closest(".demo").classList.toggle("is-off", !on);
+  const demo = sw.closest(".demo");
+  demo.classList.toggle("is-off", !on);
+  demo.classList.add("touched");
 });

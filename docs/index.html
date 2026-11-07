@@ -25,8 +25,6 @@
 <svg width="0" height="0" style="position: absolute" aria-hidden="true">
   <symbol id="logo" viewBox="0 0 48 48"><rect x="10" y="4" width="34" height="30" rx="8" fill="#4D94FF" fill-opacity=".45"/><rect x="4" y="12" width="34" height="32" rx="9" fill="#0068FF"/><path d="M13 21h16L13 36h16" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.2c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.36-3.37-1.36-.46-1.18-1.11-1.5-1.11-1.5-.91-.63.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.35 1.11 2.92.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.13-4.56-5.04 0-1.11.39-2.02 1.03-2.73-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.04a9.4 9.4 0 0 1 5 0c1.91-1.32 2.75-1.04 2.75-1.04.55 1.4.2 2.44.1 2.7.64.71 1.03 1.62 1.03 2.73 0 3.92-2.34 4.78-4.57 5.03.36.32.68.94.68 1.9v2.81c0 .27.18.6.69.49A10.2 10.2 0 0 0 22 12.2C22 6.58 17.52 2 12 2Z"/></symbol>
-  <symbol id="download" viewBox="0 0 24 24"><g class="icon"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></g></symbol>
-  <symbol id="plus" viewBox="0 0 24 24"><g class="icon"><path d="M12 5v14"/><path d="M5 12h14"/></g></symbol>
   <symbol id="check" viewBox="0 0 24 24"><path class="icon" d="m5 12 5 5 9-10"/></symbol>
   <symbol id="arrow-both" viewBox="0 0 150 12" preserveAspectRatio="none"><g class="icon"><path d="M2 6h146"/><path d="m141 1 7 5-7 5"/><path d="m9 1-7 5 7 5"/></g></symbol>
 </svg>
@@ -51,8 +49,8 @@
     <h1 data-i18n="h1">Zalo Web in <span class="accent">every tab.</span></h1>
     <p class="lead" data-i18n="lead">Open chat.zalo.me in as many tabs as you like. They share one connection, so none of them gets kicked out to the “open in another tab” screen.</p>
     <div class="actions">
-      <a class="btn btn-primary" href="https://microsoftedge.microsoft.com/addons/detail/jofjdigkccpakpapllagcafjgflbmikd"><svg width="18" height="18" aria-hidden="true"><use href="#plus"/></svg><span data-i18n="get-edge">Get it for Edge</span></a>
-      <a class="btn btn-ghost" href="https://github.com/nh4ttruong/z-tabs/releases/latest"><svg width="18" height="18" aria-hidden="true"><use href="#download"/></svg><span data-i18n="get-chrome">Download for Chrome</span></a>    </div>
+      <a class="btn btn-primary" href="https://microsoftedge.microsoft.com/addons/detail/jofjdigkccpakpapllagcafjgflbmikd"><span class="brand"><img src="img/edge.svg" alt="" width="18" height="18"></span><span data-i18n="get-edge">Get it for Edge</span></a>
+      <a class="btn btn-ghost" href="https://github.com/nh4ttruong/z-tabs/releases/latest"><span class="brand"><img src="img/chrome.svg" alt="" width="18" height="18"></span><span data-i18n="get-chrome">Download for Chrome</span></a>    </div>
     <p class="fine" data-i18n="fine">Chrome and Edge 111+. Open source, MIT license.</p>
 
     <div class="demo">
@@ -100,11 +98,12 @@
           <span class="count" aria-hidden="true">3</span>
         </div>
         <div class="popup-body">
+          <span class="try" aria-hidden="true" data-i18n="try">Click me</span>
           <button class="switch" id="switch" type="button" role="switch" aria-checked="true" aria-label="Z Tabs">
             <span class="knob"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path class="icon" stroke-width="2.8" d="M6.5 7h11l-11 10h11"/></svg></span>
           </button>
         </div>
-        <p class="status" aria-live="polite"><span class="status-on" data-i18n="status-on">3 tabs, 1 shared connection</span><span class="status-off" data-i18n="status-off">Off: only the newest tab stays connected</span></p>
+        <p class="status" aria-live="polite"><span class="status-on" data-i18n="status-on">3 tabs, 1 shared connection</span><span class="status-off" data-i18n="status-off">Off: only one tab works at a time</span></p>
         <div class="popup-foot">Crafted by&nbsp;<b>@nh4ttruong</b></div>
       </div>
     </div>
@@ -237,7 +236,7 @@
       <div class="card"><h3 data-i18n="l1-title">Not an official Zalo feature</h3><p data-i18n="l1-body">A Zalo Web update may break it. When it does, the 10-second fallback keeps your session usable.</p></div>
       <div class="card"><h3 data-i18n="l2-title">One browser at a time</h3><p data-i18n="l2-body">Zalo PC, or Zalo Web in another browser, still takes the single connection and disconnects every tab here.</p></div>
       <div class="card"><h3 data-i18n="l3-title">Shared storage</h3><p data-i18n="l3-body">Tabs share Zalo’s local database, so a conversation list may rarely need a reload.</p></div>
-      <div class="card"><h3 data-i18n="l4-title">Chrome and Edge</h3><p data-i18n="l4-body">Needs Chrome or Edge 111 or newer. There is no Safari or Firefox version.</p></div>
+      <div class="card"><div class="browsers"><img src="img/chrome.svg" alt="Chrome" width="28" height="28"><img src="img/edge.svg" alt="Edge" width="28" height="28"></div><h3 data-i18n="l4-title">Chrome and Edge</h3><p data-i18n="l4-body">Needs Chrome or Edge 111 or newer. There is no Safari or Firefox version.</p></div>
     </div>
   </div>
 </section>
@@ -249,8 +248,8 @@
     <h2 data-i18n="cta-title">Open one more tab.</h2>
     <p data-i18n="cta-body">Free, open source, no account to create.</p>
     <div class="actions">
-      <a class="btn btn-primary" href="https://microsoftedge.microsoft.com/addons/detail/jofjdigkccpakpapllagcafjgflbmikd"><svg width="18" height="18" aria-hidden="true"><use href="#plus"/></svg><span data-i18n="get-edge">Get it for Edge</span></a>
-      <a class="btn btn-ghost" href="https://github.com/nh4ttruong/z-tabs/releases/latest"><svg width="18" height="18" aria-hidden="true"><use href="#download"/></svg><span data-i18n="get-chrome">Download for Chrome</span></a>    </div>
+      <a class="btn btn-primary" href="https://microsoftedge.microsoft.com/addons/detail/jofjdigkccpakpapllagcafjgflbmikd"><span class="brand"><img src="img/edge.svg" alt="" width="18" height="18"></span><span data-i18n="get-edge">Get it for Edge</span></a>
+      <a class="btn btn-ghost" href="https://github.com/nh4ttruong/z-tabs/releases/latest"><span class="brand"><img src="img/chrome.svg" alt="" width="18" height="18"></span><span data-i18n="get-chrome">Download for Chrome</span></a>    </div>
   </div>
 </section>
 </main>
