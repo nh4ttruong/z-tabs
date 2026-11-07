@@ -50,8 +50,8 @@
     <p class="lead" data-i18n="lead">Open chat.zalo.me in as many tabs as you like. They share one connection, so none of them gets kicked out to the “open in another tab” screen.</p>
     <div class="actions">
       <a class="btn btn-primary" href="https://microsoftedge.microsoft.com/addons/detail/jofjdigkccpakpapllagcafjgflbmikd"><span class="brand"><img src="img/edge.svg" alt="" width="18" height="18"></span><span data-i18n="get-edge">Get it for Edge</span></a>
-      <a class="btn btn-ghost" href="https://github.com/nh4ttruong/z-tabs/releases/latest"><span class="brand"><img src="img/chrome.svg" alt="" width="18" height="18"></span><span data-i18n="get-chrome">Download for Chrome</span></a>    </div>
-    <p class="fine" data-i18n="fine">Chrome and Edge 111+. Open source, MIT license.</p>
+      <a class="btn btn-ghost" href="https://github.com/nh4ttruong/z-tabs/releases/latest"><span class="brand"><img src="img/chrome.svg" alt="" width="18" height="18"></span><span data-i18n="get-chrome">Download for Chrome</span></a>
+    </div>
 
     <div class="demo">
       <div class="browser" aria-hidden="true">
@@ -111,90 +111,39 @@
   </div>
 </section>
 
-<section class="section" id="how">
-  <div class="wrap">
-    <div class="reveal">
-      <p class="eyebrow" data-i18n="how-eyebrow">How it works</p>
-      <h2 data-i18n="how-title">Install once, then forget it is there.</h2>
-      <p class="how-note" data-i18n="how-edge">On Edge, <a href="https://microsoftedge.microsoft.com/addons/detail/jofjdigkccpakpapllagcafjgflbmikd">install it from Edge Add-ons</a> and flip the switch. On Chrome, it takes three steps:</p>
-    </div>
-    <div class="grid reveal">
-      <div class="card step">
-        <div class="step-no">01</div>
-        <h3 data-i18n="s1-title">Download</h3>
-        <p data-i18n="s1-body">Grab the latest <code>z-tabs-x.y.z.zip</code> from <a href="https://github.com/nh4ttruong/z-tabs/releases/latest">GitHub Releases</a> and unzip it.</p>
-      </div>
-      <div class="card step">
-        <div class="step-no">02</div>
-        <h3 data-i18n="s2-title">Load it</h3>
-        <p data-i18n="s2-body">Open <code>chrome://extensions</code>, turn on Developer mode, click Load unpacked and pick the folder.</p>
-      </div>
-      <div class="card step">
-        <div class="step-no">03</div>
-        <h3 data-i18n="s3-title">Flip the switch</h3>
-        <p data-i18n="s3-body">Click the Z Tabs icon and turn it on. Then open as many Zalo tabs as you like.</p>
-      </div>
-    </div>
-
-    <div class="card hood reveal">
-      <div class="hood-head">
-        <h3 data-i18n="hood-title">Under the hood</h3>
-        <p data-i18n="hood-body">Zalo Web allows one tab and one chat socket per account. One tab becomes the hub and holds the only socket; the others talk through it.</p>
-      </div>
-      <div class="flow" role="img" aria-label="Tab 2 and Tab 3 talk to Tab 1, the hub, over BroadcastChannel; the hub holds the one WebSocket to chat.zalo.me.">
-        <div class="flow-stack"><div class="node">Tab 2</div><div class="node">Tab 3</div></div>
-        <div class="link"><span data-i18n="link-tabs">BroadcastChannel</span><svg aria-hidden="true"><use href="#arrow-both"/></svg></div>
-        <div class="node hub"><span data-i18n="hub">Tab 1, the hub</span><small data-i18n="hub-note">Web Lock ztabs:hub</small></div>
-        <div class="link"><span data-i18n="link-ws">1 WebSocket</span><svg aria-hidden="true"><use href="#arrow-both"/></svg></div>
-        <div class="node server"><span data-i18n="servers">Zalo servers</span><small>chat.zalo.me</small></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section deep">
+<section class="section deep" id="why">
   <div class="wrap">
     <div class="reveal">
       <p class="eyebrow" data-i18n="why-eyebrow">Why Z Tabs</p>
       <h2 data-i18n="why-title">Small extension, no surprises.</h2>
     </div>
     <div class="bento">
-      <div class="bento-row reveal">
-        <div class="card tile wide">
-          <div class="chips" aria-hidden="true">
-            <span class="chip"><i class="dot"></i>Tab 1</span>
-            <span class="chip"><i class="dot"></i>Tab 2</span>
-            <span class="chip"><i class="dot"></i>Tab 3</span>
-            <span class="chip"><i class="dot"></i>Tab 4</span>
-            <svg width="40" height="12" viewBox="0 0 40 12"><g class="icon"><path d="M2 6h34"/><path d="m29 1 7 5-7 5"/></g></svg>
-            <span class="chip solid" data-i18n="one-conn">1 connection</span>
-          </div>
-          <div>
-            <h3 data-i18n="f1-title">One connection, every tab</h3>
-            <p data-i18n="f1-body">Every tab ignores the others’ “open in another tab” signal. The hub replays the handshake to each new tab and routes every reply to the tab that asked.</p>
-          </div>
+      <div class="card tile hub-tile reveal">
+        <div>
+          <h3 data-i18n="f1-title">One connection, every tab</h3>
+          <p data-i18n="f1-body">Zalo Web allows one chat connection per account. One tab becomes the hub and holds it; the other tabs send and receive through the hub, so none of them gets kicked out.</p>
         </div>
-        <div class="card tile">
-          <span class="badge-icon green"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><g class="icon" stroke-width="1.75"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6L12 3Z"/><path d="m9 12 2 2 4-4"/></g></svg></span>
-          <div>
-            <h3 data-i18n="f2-title">Nothing leaves your browser</h3>
-            <p data-i18n="f2-body">No servers, no analytics, no logs. Z Tabs only runs on chat.zalo.me.</p>
-          </div>
+        <div class="flow" role="img" aria-label="Tab 2 and Tab 3 talk to Tab 1, the hub, which holds the one connection to Zalo.">
+          <div class="flow-stack"><div class="node">Tab 2</div><div class="node">Tab 3</div></div>
+          <div class="link"><span data-i18n="link-tabs">BroadcastChannel</span><svg aria-hidden="true"><use href="#arrow-both"/></svg></div>
+          <div class="node hub"><span data-i18n="hub">Tab 1, the hub</span><small data-i18n="hub-note">Web Lock ztabs:hub</small></div>
+          <div class="link"><span data-i18n="link-ws">1 WebSocket</span><svg aria-hidden="true"><use href="#arrow-both"/></svg></div>
+          <div class="node server"><span data-i18n="servers">Zalo servers</span><small>chat.zalo.me</small></div>
         </div>
       </div>
       <div class="bento-row reveal">
         <div class="card tile">
           <span class="badge-icon"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><g class="icon" stroke-width="1.75"><path d="M20 11a8 8 0 0 0-14.9-3.9"/><path d="M4 4v4h4"/><path d="M4 13a8 8 0 0 0 14.9 3.9"/><path d="M20 20v-4h-4"/></g></svg></span>
           <div>
-            <h3 data-i18n="f3-title">The hub hands off</h3>
-            <p data-i18n="f3-body">Close or freeze the hub tab and another one takes over within a few seconds.</p>
+            <h3 data-i18n="f3-title">Close any tab you like</h3>
+            <p data-i18n="f3-body">Even if the hub tab closes or freezes, another one takes over within a few seconds.</p>
           </div>
         </div>
         <div class="card tile">
           <div class="big" data-i18n="ten-s">10 s</div>
           <div>
             <h3 data-i18n="f4-title">Safe fallback</h3>
-            <p data-i18n="f4-body">If Zalo changes and no handshake arrives within 10 seconds, every tab falls back to plain Zalo Web.</p>
+            <p data-i18n="f4-body">If Zalo changes and no connection comes up within 10 seconds, every tab falls back to plain Zalo Web.</p>
           </div>
         </div>
         <div class="card tile">
@@ -233,23 +182,39 @@
       <h2 data-i18n="limits-title">The honest limits.</h2>
     </div>
     <div class="grid limits reveal">
-      <div class="card"><h3 data-i18n="l1-title">Not an official Zalo feature</h3><p data-i18n="l1-body">A Zalo Web update may break it. When it does, the 10-second fallback keeps your session usable.</p></div>
+      <div class="card"><h3 data-i18n="l1-title">Not an official Zalo feature</h3><p data-i18n="l1-body">A Zalo Web update may break it. Your chats keep working, just one tab at a time again.</p></div>
       <div class="card"><h3 data-i18n="l2-title">One browser at a time</h3><p data-i18n="l2-body">Zalo PC, or Zalo Web in another browser, still takes the single connection and disconnects every tab here.</p></div>
       <div class="card"><h3 data-i18n="l3-title">Shared storage</h3><p data-i18n="l3-body">Tabs share Zalo’s local database, so a conversation list may rarely need a reload.</p></div>
-      <div class="card"><div class="browsers"><img src="img/chrome.svg" alt="Chrome" width="28" height="28"><img src="img/edge.svg" alt="Edge" width="28" height="28"></div><h3 data-i18n="l4-title">Chrome and Edge</h3><p data-i18n="l4-body">Needs Chrome or Edge 111 or newer. There is no Safari or Firefox version.</p></div>
+      <div class="card"><h3 data-i18n="l4-title">Chrome and Edge only</h3><p data-i18n="l4-body">Needs Chrome or Edge 111 or newer. There is no Safari or Firefox version.</p></div>
     </div>
   </div>
 </section>
 
-<section class="cta">
-  <div class="glow" aria-hidden="true"></div>
-  <div class="wrap reveal">
-    <svg width="64" height="64" aria-hidden="true"><use href="#logo"/></svg>
-    <h2 data-i18n="cta-title">Open one more tab.</h2>
-    <p data-i18n="cta-body">Free, open source, no account to create.</p>
-    <div class="actions">
-      <a class="btn btn-primary" href="https://microsoftedge.microsoft.com/addons/detail/jofjdigkccpakpapllagcafjgflbmikd"><span class="brand"><img src="img/edge.svg" alt="" width="18" height="18"></span><span data-i18n="get-edge">Get it for Edge</span></a>
-      <a class="btn btn-ghost" href="https://github.com/nh4ttruong/z-tabs/releases/latest"><span class="brand"><img src="img/chrome.svg" alt="" width="18" height="18"></span><span data-i18n="get-chrome">Download for Chrome</span></a>    </div>
+<section class="section" id="install">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow" data-i18n="install-eyebrow">Install</p>
+      <h2 data-i18n="install-title">Install once, then forget it is there.</h2>
+    </div>
+    <div class="grid install reveal">
+      <div class="card">
+        <img src="img/edge.svg" alt="" width="40" height="40">
+        <h3>Microsoft Edge</h3>
+        <p data-i18n="edge-body">One click from Edge Add-ons, and updates arrive on their own. Then click the Z Tabs icon and flip the switch.</p>
+        <a class="btn btn-primary" href="https://microsoftedge.microsoft.com/addons/detail/jofjdigkccpakpapllagcafjgflbmikd" data-i18n="get-edge">Get it for Edge</a>
+      </div>
+      <div class="card">
+        <img src="img/chrome.svg" alt="" width="40" height="40">
+        <h3>Google Chrome</h3>
+        <p data-i18n="chrome-body">Not on the Chrome Web Store, so it takes three steps:</p>
+        <ol class="steps">
+          <li data-i18n="c1">Download the latest zip from <a href="https://github.com/nh4ttruong/z-tabs/releases/latest">GitHub Releases</a> and unzip it.</li>
+          <li data-i18n="c2">Open <code>chrome://extensions</code> and turn on Developer mode.</li>
+          <li data-i18n="c3">Click Load unpacked, pick the folder, then flip the Z Tabs switch.</li>
+        </ol>
+        <a class="btn btn-ghost" href="https://github.com/nh4ttruong/z-tabs/releases/latest" data-i18n="get-chrome">Download for Chrome</a>
+      </div>
+    </div>
   </div>
 </section>
 </main>
