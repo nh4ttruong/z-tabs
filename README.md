@@ -14,9 +14,9 @@ All Zalo tabs share one connection, so none of them gets kicked out with "Zalo i
 
 ## Install
 
-**Edge:** get it from [Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/jofjdigkccpakpapllagcafjgflbmikd), then click the Z Tabs icon and flip the switch.
+<img src="docs/img/edge.svg" alt="" height="16"> **Edge:** get it from [Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/jofjdigkccpakpapllagcafjgflbmikd), then click the Z Tabs icon and flip the switch.
 
-**Chrome and other Chromium browsers:**
+<img src="docs/img/chrome.svg" alt="" height="16"> **Chrome and other Chromium browsers** (Brave, Cốc Cốc, Opera, Vivaldi, ...):
 
 1. Download `z-tabs-<version>.zip` from [Releases](https://github.com/nh4ttruong/z-tabs/releases/latest) and unzip it.
 2. Open the browser's extensions page (`chrome://extensions`, ...), enable **Developer mode**, click **Load unpacked** and pick the unzipped folder.
