@@ -10,7 +10,9 @@
 </div>
 
 Browser extension for [Zalo Web](https://chat.zalo.me).
-All Zalo tabs share one connection, so none of them gets kicked out with "Zalo is open in another tab".
+All Zalo tabs share one connection, so none of them gets kicked out to the "open in another tab" screen:
+
+<img src="docs/img/zalo-dialog.png" alt="Zalo Web dialog: Bạn đang mở Zalo trên một Tab khác hoặc không sử dụng Zalo quá lâu" width="640" />
 
 ## Install
 
@@ -59,7 +61,8 @@ Nothing leaves the browser: Z Tabs keeps no logs and sends nothing.
 
 ## Limits
 
-- Not an official Zalo feature; a Zalo Web update may break it, and the 10 s fallback keeps the session usable when it does.
+- Unofficial and not affiliated with Zalo. It changes how Zalo Web handles tabs, which may conflict with Zalo's terms of use, so use it at your own risk.
+- A Zalo Web update may break it; the 10 s fallback keeps the session usable when it does.
 - Zalo PC or Zalo Web in another browser still takes the single connection and disconnects every tab here.
 - Tabs share Zalo's IndexedDB, so a conversation list may rarely need a reload.
 
